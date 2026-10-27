@@ -41,3 +41,6 @@ ChatGPT was used for explanations, debugging guidance, and assistance with code 
 ## Status
 
 Work in progress. Initial data exploration and dataset download functionality have been implemented.
+
+- **Local ZIP file date:** 2026-10-09 (based on file creation timestamp)
+- **SHA-256 (local ZIP):** `50d2a982c66986937beb9ffb3aa76efe955bf3d5c6b761f4e3a7cd717c6a3229`
