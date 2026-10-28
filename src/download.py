@@ -44,9 +44,33 @@ def calculate_checksum():
 
     return checksum
 
+def verify_zip():
+    with zipfile.ZipFile(ZIP_PATH, "r") as zip_ref:
+        bad_file = zip_ref.testzip()
+
+    if bad_file is None:
+        print("ZIP integrity check passed.")
+    else:
+        raise ValueError(f"Corrupted file inside ZIP: {bad_file}")
+
+def verify_extracted_files():
+    extracted_dir = RAW_DIR / "ml-100k"
+
+    required_files = ["u.user", "u.item", "u.data"]
+
+    for filename in required_files:
+        file_path = extracted_dir / filename
+
+        if not file_path.is_file():
+            raise FileNotFoundError(f"Missing required file: {filename}")
+
+    print("All required dataset files are present.")
 
 if __name__ == "__main__":
     download_dataset()
+    verify_zip()
     extract_dataset()
+    verify_extracted_files()
     calculate_checksum()
+    
     
