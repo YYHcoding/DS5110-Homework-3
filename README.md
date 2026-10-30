@@ -23,7 +23,56 @@ make
 
 `make` downloads and extracts the dataset if needed, runs a strict load that records refused rows in `output/rejected.csv`, then clears and reloads the database from all raw files using `src/reload.py`. The second stage does not overwrite the rejection report. Use `make download` to acquire the data without rebuilding the database, or `make clean` to remove generated database and rejection files.
 
-## Project Structure
+## Project Structure 
+
+## Database Schema (ER Diagram)
+
+```mermaid
+erDiagram
+    occupations ||--o{ users : has
+    users ||--o{ ratings : gives
+    movies ||--o{ ratings : receives
+    movies ||--o{ movie_genres : has
+    genres ||--o{ movie_genres : classifies
+
+    occupations {
+        TEXT occupation PK
+    }
+
+    users {
+        INTEGER user_id PK
+        INTEGER age
+        TEXT gender
+        TEXT occupation FK
+        TEXT zip
+    }
+
+    movies {
+        INTEGER movie_id PK
+        TEXT title
+        TEXT release_date
+        TEXT video_release_date
+        TEXT imdb_url
+    }
+
+    genres {
+        INTEGER genre_id PK
+        TEXT name
+    }
+
+    movie_genres {
+        INTEGER movie_id PK, FK
+        INTEGER genre_id PK, FK
+    }
+
+    ratings {
+        INTEGER user_id PK, FK
+        INTEGER movie_id PK, FK
+        INTEGER rating
+        INTEGER timestamp
+    }
+```
+
 
 - `Notebooks/` — Exploratory data analysis
 - `src/` — Data downloading and database loading scripts
