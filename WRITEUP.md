@@ -42,6 +42,27 @@ The three raw files use different formats and require different parsing settings
 
 **Data quality checks:** The database schema enforces valid rating ranges, primary keys, foreign keys, and required fields. Additional SQL queries are needed to verify dataset-level claims, such as the total number of ratings and the minimum number of ratings per user.
 
+## 0(d) Exploratory Data Analysis
+
+### Chart 1 – Distribution of Ratings
+
+The first chart shows the distribution of all 100,000 ratings in the MovieLens 100K dataset. Rating 4 is the most frequent score, with 34,174 observations (34.17%), followed by rating 3 with 27,145 observations (27.15%). Ratings of 4 and 5 together account for 55.38% of all ratings.
+
+This suggests that the observed ratings are concentrated toward higher scores. All observed ratings fall between 1 and 5, consistent with the documented rating scale.
+
+**Follow-up check:** After loading the data into SQLite, we should verify that the database contains 100,000 ratings and that every rating satisfies the constraint `CHECK (rating BETWEEN 1 AND 5)`.
+
+The chart and its generating code are available in `Notebooks/01_exploration.ipynb`.
+### Chart 2 – Number of Ratings per User
+
+The second chart shows the distribution of rating counts across 943 users. On average, each user contributed 106.04 ratings, while the median was 65. The minimum number of ratings was 20, and the maximum was 737.
+
+The histogram is right-skewed: most users contributed relatively few ratings, while a small number of highly active users contributed hundreds of ratings. These highly active users raise the mean above the median.
+
+**Follow-up check:** The observed minimum of 20 ratings per user is consistent with the MovieLens documentation. After loading the data into SQLite, we should verify this claim using a SQL query that counts ratings for every user.
+
+The chart and its generating code are available in `Notebooks/01_exploration.ipynb`.
+
 # Step 3 — Load the data and keep what is refused
 
 ## Predictions
