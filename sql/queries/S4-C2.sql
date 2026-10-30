@@ -1,0 +1,2 @@
+SELECT MIN(user_id) AS min_id, MAX(user_id) AS max_id, COUNT(DISTINCT user_id) AS unique_total FROM users;
+SELECT MIN(movie_id) AS min_id, MAX(movie_id) AS max_id, COUNT(DISTINCT movie_id) AS unique_total FROM movies;

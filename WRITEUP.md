@@ -90,3 +90,63 @@ The Makefile now runs `src/load.py` first, then `src/reload.py`. The second scri
 | `movie_genres` | 2,878 | 2,893 | 15 |
 | `ratings` | 99,926 | 100,000 | 74 |
 | Rejected rows | 84 | 0|  |
+
+# Step 4
+
+## Claim 1
+"There are 100,000 ratings by 943 users on 1,682 movies"
+This is supported by sql/queries/S4-C1.sql. This query shows the number of ratings, movies, and users.
+Result:
+```
+sqlite> .read sql/queries/S4-C1.sql
+╭───────────┬──────────┬─────────╮
+│ N_RATINGS │ N_MOVIES │ N_USERS │
+╞═══════════╪══════════╪═════════╡
+│    100000 │     1682 │     943 │
+╰───────────┴──────────┴─────────╯
+```
+
+## Claim 2
+
+"Users and movies are numbered consecutively from 1"
+ This is supported by sql/queries/S4-C2.sql. This query shows the min and max user IDs and movie IDs. The total is the total of unique IDs. If the max equals unique total, and table schema enforce all IDs to be integers, the IDs must be continuous.
+Result:
+```
+sqlite> .read sql/queries/S4-C2.sql
+╭────────┬────────┬──────────────╮
+│ min_id │ max_id │ unique_total │
+╞════════╪════════╪══════════════╡
+│      1 │    943 │          943 │
+╰────────┴────────┴──────────────╯
+╭────────┬────────┬──────────────╮
+│ min_id │ max_id │ unique_total │
+╞════════╪════════╪══════════════╡
+│      1 │   1682 │         1682 │
+╰────────┴────────┴──────────────╯
+```
+
+
+## Claim 3
+
+"Every user has rated at least 20 movies."
+This is supported by sql/queries/S4-C3.sql. This query shows the 10 users with least ratings in the dataset.
+Result:
+```
+sqlite> .read sql/queries/S4-C3.sql
+╭─────────┬──────────────╮
+│ user_id │ rating_count │
+╞═════════╪══════════════╡
+│      19 │           20 │
+│      34 │           20 │
+│      36 │           20 │
+│      93 │           20 │
+│     143 │           20 │
+│     147 │           20 │
+│     166 │           20 │
+│     202 │           20 │
+│     242 │           20 │
+│     300 │           20 │
+╰─────────┴──────────────╯
+```
+
+
