@@ -36,11 +36,27 @@ The three raw files use different formats and require different parsing settings
 
 **Delimiters and encoding:** The `u.user` and `u.item` files use pipe-separated values, while `u.data` is tab-separated. During database loading, UTF-8 decoding caused some movie records to be rejected. Using Latin-1 encoding allowed those movie titles to be read correctly.
 
+**README discrepancy:** The original MovieLens 100K README describes `u.item` and `u.user` as tab-separated files. However, inspection of the actual raw files shows that both use pipe (`|`) delimiters, while `u.data` is tab-separated. We therefore used the observed delimiters when parsing the files rather than relying solely on the README descriptions.
+
 **Column types:** User IDs, movie IDs, ratings, and timestamps are stored as integers. ZIP codes are stored as text because they are identifiers rather than quantities. Treating them as integers could remove leading zeros.
 
 **Missing values:** Some movie metadata fields are blank, including release dates, video release dates, and IMDb URLs. These optional fields can be represented as SQL `NULL` values. Required fields remain subject to the schema's `NOT NULL` constraints.
 
 **Data quality checks:** The database schema enforces valid rating ranges, primary keys, foreign keys, and required fields. Additional SQL queries are needed to verify dataset-level claims, such as the total number of ratings and the minimum number of ratings per user.
+
+### Additional Validation Against the Original MovieLens README
+
+We compared our SQLite schema with the original MovieLens 100K README to identify which documented data properties require additional validation.
+
+The README states that user IDs and movie IDs are consecutively numbered starting from 1. Although our primary keys enforce uniqueness, they do not guarantee consecutive numbering. We therefore need SQL queries to check the minimum and maximum IDs, record counts, and missing IDs.
+
+The README also states that each user rated at least 20 movies. This is a dataset-level requirement that cannot be enforced by our existing row-level constraints. We will verify it by grouping ratings by user and checking the minimum rating count.
+
+The original `u.item` file contains 19 binary genre indicators, where 1 means a movie belongs to a genre and 0 means it does not. Our normalized `genres` and `movie_genres` tables represent these associations, but the original indicator values must be validated during data loading.
+
+Finally, the README specifies that timestamps represent Unix seconds since January 1, 1970 UTC. Our `INTEGER NOT NULL` constraint ensures that timestamps are stored as integers, but it does not establish whether they represent valid Unix timestamps or correspond to the documented collection period.
+
+These checks complement the schema constraints and help verify that the loaded database preserves the properties described in the original dataset documentation.
 
 ## 0(d) Exploratory Data Analysis
 
