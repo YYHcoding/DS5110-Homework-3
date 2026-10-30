@@ -1,3 +1,47 @@
+# Step 0 – Describe the Raw Data
+
+## 0(a) Raw Data Inspection
+
+We used Python and pandas to inspect the three main raw files in the MovieLens 100K dataset before designing the SQLite database.
+
+| Raw file | Rows | Columns | One row represents |
+|---|---:|---:|---|
+| `u.user` | 943 | 5 | One user and their demographic information |
+| `u.item` | 1,682 | 24 | One movie and its metadata, including 19 genre indicators |
+| `u.data` | 100,000 | 4 | One rating submitted by a user for a movie |
+
+The `u.user` file contains user ID, age, gender, occupation, and ZIP code. The `u.item` file contains movie metadata, including title, release date, IMDb URL, and genre flags. The `u.data` file contains user ID, movie ID, rating, and timestamp.
+
+The first few rows of each dataset are displayed in `Notebooks/01_exploration.ipynb`, which also contains our exploratory analysis.
+
+## 0(b) Tidy Data Assessment
+
+**`u.user`:** Each row represents one user, and each column represents one attribute of that user. The file follows tidy data principles because each user is represented by a single observation.
+
+**`u.data`:** Each row represents one user–movie rating. The columns contain the user ID, movie ID, rating, and timestamp. This file is tidy because each rating is one observation and each variable has its own column.
+
+**`u.item`:** Each row represents one movie. Most movie attributes are stored in separate columns, but genre membership is represented by 19 binary indicator columns. This is a wide representation of the movie–genre relationship rather than a normalized relational structure.
+
+For our SQLite database, we convert these indicators into separate `genres` and `movie_genres` tables. This allows one movie to belong to multiple genres without storing a separate column for every possible genre.
+
+## 0(c) File Formats and Data Quality
+
+The three raw files use different formats and require different parsing settings.
+
+| File | Delimiter | Encoding | Important considerations |
+|---|---|---|---|
+| `u.user` | Pipe (`\|`) | Not separately verified | ZIP codes must be treated as text |
+| `u.item` | Pipe (`\|`) | Latin-1 | Contains 19 genre flags and missing movie metadata |
+| `u.data` | Tab (`\t`) | Not separately verified | Ratings and timestamps should be parsed as integers |
+
+**Delimiters and encoding:** The `u.user` and `u.item` files use pipe-separated values, while `u.data` is tab-separated. During database loading, UTF-8 decoding caused some movie records to be rejected. Using Latin-1 encoding allowed those movie titles to be read correctly.
+
+**Column types:** User IDs, movie IDs, ratings, and timestamps are stored as integers. ZIP codes are stored as text because they are identifiers rather than quantities. Treating them as integers could remove leading zeros.
+
+**Missing values:** Some movie metadata fields are blank, including release dates, video release dates, and IMDb URLs. These optional fields can be represented as SQL `NULL` values. Required fields remain subject to the schema's `NOT NULL` constraints.
+
+**Data quality checks:** The database schema enforces valid rating ranges, primary keys, foreign keys, and required fields. Additional SQL queries are needed to verify dataset-level claims, such as the total number of ratings and the minimum number of ratings per user.
+
 # Step 3 — Load the data and keep what is refused
 
 ## Predictions
