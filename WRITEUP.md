@@ -1,4 +1,8 @@
-# Step 0 – Describe the Raw Data
+# Step 0 – Describe the Raw Data 
+![Rating Distribution](rating_distribution.png)
+
+![Ratings per User](rating_per_user.png)
+
 
 ## 0(a) Raw Data Inspection
 
