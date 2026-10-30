@@ -63,6 +63,69 @@ The histogram is right-skewed: most users contributed relatively few ratings, wh
 
 The chart and its generating code are available in `Notebooks/01_exploration.ipynb`.
 
+# Step 2 – Design the Schema
+
+## 2(a) Entity-Relationship Diagram
+
+The database schema consists of six tables: `users`, `occupations`, `movies`, `genres`, `movie_genres`, and `ratings`.
+
+Primary keys uniquely identify records, while foreign keys enforce relationships between tables. The `ratings` and `movie_genres` tables use composite primary keys to prevent duplicate user–movie ratings and duplicate movie–genre associations.
+
+The complete entity-relationship diagram is provided in `README.md` under **Database Schema (ER Diagram)**.
+
+## 2(b) Normalization of Movie Genres
+
+The original `u.item` file stores movie genres using 19 binary indicator columns. A movie can belong to multiple genres, so several indicators may have the value 1 in the same row.
+
+We normalized this representation into two tables: `genres`, which stores the available genre names, and `movie_genres`, which stores the relationship between each movie and its genres.
+
+This design represents the many-to-many relationship between movies and genres without requiring a separate column for every genre. It also avoids unnecessary schema changes when new genres are introduced and makes genre-based queries easier to express using SQL joins.
+
+The composite primary key `(movie_id, genre_id)` prevents duplicate movie–genre associations, while foreign keys ensure that each association refers to an existing movie and genre.
+
+## 2(c) Database Constraints and Validation
+
+We designed the SQLite schema using `STRICT` tables, primary keys, foreign keys, `NOT NULL`, `UNIQUE`, and `CHECK` constraints to enforce data integrity.
+
+### Rules Enforced by the Schema
+
+| Data rule | SQLite constraint |
+|---|---|
+| Each user has a unique identifier | `users.user_id PRIMARY KEY` |
+| Each movie has a unique identifier | `movies.movie_id PRIMARY KEY` |
+| User age must be positive | `CHECK (age > 0)` |
+| Gender must be M or F | `CHECK (gender IN ('M', 'F'))` |
+| Each user's occupation must be valid | `REFERENCES occupations(occupation)` |
+| Ratings must be integers between 1 and 5 | `INTEGER NOT NULL CHECK (rating BETWEEN 1 AND 5)` in a `STRICT` table |
+| Each rating must reference an existing user and movie | Foreign keys in `ratings` |
+| Each user–movie pair can occur only once in `ratings` | Composite primary key `(user_id, movie_id)` |
+| Each movie–genre association must be unique | Composite primary key `(movie_id, genre_id)` |
+| Each movie–genre association must reference valid records | Foreign keys in `movie_genres` |
+| Required fields must not be missing | `NOT NULL` constraints |
+
+We enable foreign key enforcement using `PRAGMA foreign_keys = ON` for database connections.
+
+### Rules Requiring Additional Validation
+
+Some dataset-level claims cannot be enforced by ordinary row-level constraints alone.
+
+These include:
+
+- The dataset contains exactly 943 users, 1,682 movies, and 100,000 ratings.
+- User IDs and movie IDs are consecutively numbered starting from 1.
+- Every user has rated at least 20 movies.
+- The dataset contains the expected number of occupations and genres.
+
+These claims must be checked after loading the data using SQL queries that count records, examine ID ranges, detect gaps, and calculate rating counts per user.
+
+The schema also does not fully validate the semantic correctness of movie metadata, such as whether a movie title, release date, or IMDb URL is factually accurate.
+
+We therefore use both schema constraints and post-loading validation queries to assess data integrity.
+
+## 2(d) ZIP Code Data Type
+
+We store ZIP codes as `TEXT` rather than `INTEGER` because ZIP codes are identifiers, not numerical quantities. Using an integer type could remove leading zeros, such as converting `02115` to `2115`. Storing ZIP codes as text preserves their original formatting and supports ZIP codes containing non-numeric characters.
+
 # Step 3 — Load the data and keep what is refused
 
 ## Predictions
