@@ -255,7 +255,7 @@ sqlite> .read sql/queries/S4-C3.sql
 
 # Step 5
 ## Case 1
-The case 1 returns the ten movies with the most inlcuding movie_id. The movie with the most ratings is Star Wars with 583 ratings. It returns 10 rows as predcited.
+This query identifies the top 10 movies by the number of ratings, including ties. We use the RANK() window function so that movies with the same rating count receive the same rank. The results show that Star Wars (1977) has the highest number of ratings, with 583. Unlike LIMIT 10, this approach ensures that any movies tied at the cutoff rank are also included.
 
 **Output:**
 ```text
@@ -377,8 +377,11 @@ SQLite-3.54 movielens.db-> .read sql/queries/S5-C4.sql
 ╰──────────────────────╯
 ```
 ## Case 5
-Prediction = 8 months, Actual 8 rows. The result is the number of ratings made in a month. Timestamps were in UNIX seconds, so converted and grouped into years and month.
-**Output:**
+**Case 5 — Number of Ratings per Calendar Month**
+
+This query counts the number of ratings submitted during each calendar month. The Unix timestamp is converted into a date, and `strftime('%Y-%m', ...)` extracts the year and month. Grouping by this value ensures that ratings from the same month in different years are counted separately.
+
+The results are ordered chronologically, making it possible to examine how rating activity changes over time. The total number of ratings across all calendar months should equal 100,000, consistent with the dataset validation in Step 4.
 ```text
 
 SQLite-3.54 movielens.db-> .read sql/queries/S5-C5.sql
@@ -1040,7 +1043,10 @@ SQLite-3.54 movielens.db-> .read sql/queries/S7-C2.sql
 ╰──────────┴─────────╯
 ```
 
-## Case C
+## Case 
+The CTE-based version is easier to read, maintain, and debug than the nested-subquery version. Each CTE represents a separate stage of the analysis, including calculating movie averages, identifying eligible movies, computing genre averages, and comparing each movie with its associated genres. These named stages make it easier to inspect intermediate results and identify errors.
+
+The nested-subquery version performs the same analysis but is harder to follow because multiple operations are embedded within one another. Both approaches should return equivalent results when the same filtering and comparison rules are applied.
 
 ### 1. Reading the movies table into pandas
 |	movie_id|	title|	release_date|	video_release_date|	imdb_url|
