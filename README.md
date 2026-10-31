@@ -80,11 +80,13 @@ erDiagram
 - `data/` — Downloaded raw data and generated database (not committed)
 - `output/` — Generated refusal report
 
-See [`writeup.md`](./writeup.md) for Step 3 row-count predictions and load results.
+See [`WRITEUP.md`](./WRITEUP.md) for the analysis, SQL results, and discussion.
 
 ## Team Collaboration
 
-Team members will work on separate Git branches and submit pull requests for review before merging into `main`.
+## Team Collaboration
+
+This homework was completed collaboratively by three team members. Work was divided across data exploration, database design, data loading, validation, SQL analysis, and documentation. The final contributions are documented in [CONTRIBUTIONS.md](./CONTRIBUTIONS.md).
 
 ## AI Assistance
 
@@ -92,4 +94,6 @@ ChatGPT was used for explanations, debugging guidance, and assistance with code 
 
 ## Status
 
-Work in progress. Initial data exploration and dataset download functionality have been implemented. SQL loading have been implemented.
+## Status
+
+The project is complete. The dataset download, database schema, data loading, validation queries, SQL analysis, pandas comparisons, and written report have been implemented. The required deliverables are included in this repository.
