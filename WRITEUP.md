@@ -1008,11 +1008,11 @@ SQLite-3.54 movielens.db-> .read sql/queries/S6-C2.sql
 ```
 # Step 7
 ## Case A
-release_date_NULL = Don't know the movie's release date
-video_release_date = No video date was recored
-imdb_url = No imdb link available for the movie 
-NULL doesn't mean the information does not exist. It means that the database did not store the value for that field
+**Case A — NULL Audit**
 
+We performed a column-level NULL audit across all six database tables: occupations, users, movies, genres, movie_genres, and ratings. For each column, the query calculates the number of missing values using `COUNT(*) - COUNT(column_name)`.
+
+The audit covers all 19 columns defined in the database schema. Based on the earlier results, missing values were observed in the movies table, including `release_date`, `video_release_date`, and `imdb_url`. The remaining columns are expected to contain no NULL values because of their schema constraints or the loaded data. The complete query allows these observations to be verified directly.
 **Output:**
 ```text
 SQLite-3.54 movielens.db-> .read sql/queries/S7-C1.sql
