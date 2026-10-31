@@ -850,6 +850,7 @@ A movie should be compared with every genre it belongs to since it can belong to
 
 ## Case C
 I would rather debug the normal version instead of the nested subquery version because it is easier to read and more orgainzed. There are named steps which makes it easy while debugging. 
+**Result Verification:** Both the CTE-based query and the nested-subquery query returned 147 rows. The movie titles, genres, rating counts, and average rating values matched after rounding the numerical results to two decimal places. The initial text comparison showed differences only in numeric formatting, such as 4.1 versus 4.10. After accounting for these formatting differences, the two implementations produced equivalent results.
 
 **Output:**
 ```text
