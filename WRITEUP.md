@@ -253,4 +253,47 @@ sqlite> .read sql/queries/S4-C3.sql
 ╰─────────┴──────────────╯
 ```
 
+# Step 5
+## Case 1
+The case 1 returns the ten movies with the most inlcuding movie_id. The movie with the most ratings is Star Wars with 583 ratings. It returns 10 rows as predcited.
 
+## Case 2
+Case 2 returns the occupations and their mean ratings. WHERE filters the rows before grouping while HAVING filters the whole group after the aggregate is calculated. At least 50 raters condition belongs in HAVING because it describes the number of users in an occupation. A row level filter condition belongs to WHERE which describes the property of a single rating.
+
+## Case 3
+Case 3 returns the zip code where the code doesn't start with a digit. If zip were stored as a integer, the non-numeric zip codes would be rejected because of STRICT and the numeric zip codes would lose the leading zeros. This is why zip code is a text.
+
+## Case 4
+The total is more than 100000 because a movie can consist of mutiple genres and joining ratings to movie_genres repeats each rating once for every genre of that movie. The sum counts the rating and movie_genre pairs and not individal ratings. Checking it showed that no there are no movies_without_genres and rating_without_genres so the difference is because of multiple genres.
+
+## Case 5
+Prediction = 8 months, Actual 8 rows. The result is the number of ratings made in a month. Timestamps were in UNIX seconds, so converted and grouped into years and month.
+
+## Case 6
+The result of case 6 is movies where it was rated by at least one student but by no programmer. EXCEPT fits in this situation because it returns the result in the first query but not in the second. So, it removed the movies appearing in the second result from the first result. UNION and INTERSECTION do not fit becasue union combines the results and INTERSECTION returns the common results.
+
+# Step 6
+## Case A
+Step 1: Calculating avg rating of each movie
+Step 2: movies with 30+ ratings
+Step 3: mean rating per game
+Step 4: eligible movie vs its genre
+Step 5: at least 0.5 above genre mean
+## Case B
+A movie should be compared with every genre it belongs to since it can belong to several genres. For example a movie that is both action and comedy should be compared with other action and comedy. This gives a more accurate comparision instead of limiting the movie to one genre.
+
+## Case C
+
+
+# Step 7
+## Case A
+release_date_NULL = Don't know the movie's release date
+video_release_date = No video date was recored
+imdb_url = No imdb link available for the movie 
+NULL doesn't mean the information does not exist. It means that the database did not store the value for that field
+
+## Case B
+NOT IN FAILS when the sub query contains NULL and may not return no rows because of NULL. It compares a value against all values returned by the subquery. NOT EXISTS checks whether a matching row exists, and handles the NULL values safely. It will return movies with no matching rating records.
+
+## Case C
+## Case D
