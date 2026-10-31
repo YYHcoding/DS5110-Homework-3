@@ -1,5 +1,5 @@
 --Nested Subqueries
-SELECT m.title, g.name AS genre, w.n_ratings, w.movie_mean, 2 AS movie_mean, w.genre_mean AS genre_mean
+SELECT m.title, g.name AS genre, w.n_ratings, w.movie_mean, w.genre_mean AS genre_mean
 FROM(
     SELECT *
     FROM(
