@@ -1,0 +1,85 @@
+source_file,line_number,table,row,error
+u.item,543,movies,"""543|Mis\\xe9rables, Les (1995)|01-Jan-1995||http://us.imdb.com/M/title-exact?Mis%E9rables%2C%20Les%20%281995%29|0|0|0|0|0|0|0|0|1|0|0|0|1|0|0|0|0|0|0""",invalid UTF-8: 'utf-8' codec can't decode byte 0xe9 in position 7: invalid continuation byte
+u.item,1005,movies,"""1005|Double vie de V\\xe9ronique, La (Double Life of Veronique, The) (1991)|01-Jan-1991||http://us.imdb.com/M/title-exact?Podwojne%20zycie%20Weroniki%20(1991)|0|0|0|0|0|0|0|0|1|0|0|0|0|0|0|0|0|0|0""",invalid UTF-8: 'utf-8' codec can't decode byte 0xe9 in position 20: invalid continuation byte
+u.item,1104,movies,"""1104|C'est arriv\\xe9 pr\\xe8s de chez vous (1992)|01-Jan-1992||http://us.imdb.com/M/title-exact?C%27est%20arriv%E9%20pr%E8s%20de%20chez%20vous%20%281992%29|0|0|0|0|0|1|1|0|1|0|0|0|0|0|0|0|0|0|0""",invalid UTF-8: 'utf-8' codec can't decode byte 0xe9 in position 16: invalid continuation byte
+u.item,1233,movies,"""1233|N\\xe9nette et Boni (1996)|01-Jan-1996||http://us.imdb.com/Title?N%E9nette+et+Boni+(1996)|0|0|0|0|0|0|0|0|1|0|0|0|0|0|0|0|0|0|0""",invalid UTF-8: 'utf-8' codec can't decode byte 0xe9 in position 6: invalid continuation byte
+u.item,1252,movies,"""1252|Contempt (M\\xe9pris, Le) (1963)|27-Jun-1997||http://us.imdb.com/M/title-exact?M%E9pris%2C+Le+(1963)|0|0|0|0|0|0|0|0|1|0|0|0|0|0|0|0|0|0|0""",invalid UTF-8: 'utf-8' codec can't decode byte 0xe9 in position 16: invalid continuation byte
+u.item,1322,movies,"""1322|Metisse (Caf\\xe9 au Lait) (1993)|01-Jan-1993||http://us.imdb.com/Title?M%E9tisse+(1993)|0|0|0|0|0|1|0|0|0|0|0|0|0|0|0|0|0|0|0""",invalid UTF-8: 'utf-8' codec can't decode byte 0xe9 in position 17: invalid continuation byte
+u.item,1366,movies,"""1366|JLG/JLG - autoportrait de d\\xe9cembre (1994)|01-Jan-1994||http://us.imdb.com/M/title-exact?JLG/JLG%20-%20autoportrait%20de%20d%E9cembre%20%281994%29|0|0|0|0|0|0|0|1|1|0|0|0|0|0|0|0|0|0|0""",invalid UTF-8: 'utf-8' codec can't decode byte 0xe9 in position 32: invalid continuation byte
+u.item,1373,movies,"[""1373"", ""Good Morning (1971)"", ""4-Feb-1971"", """", ""http://us.imdb.com/M/title-exact?Good%20Morning%20(1971)"", ""1"", ""0"", ""0"", ""0"", ""0"", ""0"", ""0"", ""0"", ""0"", ""0"", ""0"", ""0"", ""0"", ""0"", ""0"", ""0"", ""0"", ""0"", ""0""]",invalid release date '4-Feb-1971'; expected DD-MMM-YYYY
+u.item,1623,movies,"""1623|C\\xe9r\\xe9monie, La (1995)|20-Dec-1996||http://us.imdb.com/M/title-exact?C%E9r%E9monie%2C%20La%20%281995%29|0|0|0|0|0|0|0|0|1|0|0|0|0|0|0|0|0|0|0""",invalid UTF-8: 'utf-8' codec can't decode byte 0xe9 in position 6: invalid continuation byte
+u.item,1633,movies,"""1633|\\xc1 k\\xf6ldum klaka (Cold Fever) (1994)|08-Mar-1996||http://us.imdb.com/Title?%C1+k%F6ldum+klaka+(1994)|0|0|0|0|0|1|0|0|1|0|0|0|0|0|0|0|0|0|0""",invalid UTF-8: 'utf-8' codec can't decode byte 0xc1 in position 5: invalid start byte
+u.data,931,ratings,"[""7"", ""543"", ""3"", ""891351772""]",FOREIGN KEY constraint failed
+u.data,1991,ratings,"[""189"", ""1005"", ""4"", ""893265971""]",FOREIGN KEY constraint failed
+u.data,3063,ratings,"[""299"", ""1322"", ""3"", ""877878001""]",FOREIGN KEY constraint failed
+u.data,3166,ratings,"[""181"", ""1322"", ""1"", ""878962086""]",FOREIGN KEY constraint failed
+u.data,3720,ratings,"[""83"", ""543"", ""2"", ""887665445""]",FOREIGN KEY constraint failed
+u.data,5727,ratings,"[""114"", ""1104"", ""5"", ""881260352""]",FOREIGN KEY constraint failed
+u.data,8568,ratings,"[""181"", ""1373"", ""1"", ""878962052""]",FOREIGN KEY constraint failed
+u.data,8981,ratings,"[""58"", ""1104"", ""2"", ""884305679""]",FOREIGN KEY constraint failed
+u.data,10246,ratings,"[""23"", ""1005"", ""3"", ""874787647""]",FOREIGN KEY constraint failed
+u.data,12703,ratings,"[""115"", ""543"", ""2"", ""881172303""]",FOREIGN KEY constraint failed
+u.data,14621,ratings,"[""312"", ""543"", ""5"", ""891698424""]",FOREIGN KEY constraint failed
+u.data,16863,ratings,"[""113"", ""1252"", ""4"", ""875935610""]",FOREIGN KEY constraint failed
+u.data,18336,ratings,"[""299"", ""543"", ""5"", ""889501890""]",FOREIGN KEY constraint failed
+u.data,19838,ratings,"[""305"", ""1104"", ""4"", ""886323779""]",FOREIGN KEY constraint failed
+u.data,20201,ratings,"[""59"", ""1005"", ""5"", ""888206363""]",FOREIGN KEY constraint failed
+u.data,26946,ratings,"[""299"", ""1005"", ""5"", ""878192833""]",FOREIGN KEY constraint failed
+u.data,27419,ratings,"[""263"", ""543"", ""5"", ""891298727""]",FOREIGN KEY constraint failed
+u.data,28997,ratings,"[""84"", ""543"", ""5"", ""883453713""]",FOREIGN KEY constraint failed
+u.data,30230,ratings,"[""405"", ""1104"", ""1"", ""885549408""]",FOREIGN KEY constraint failed
+u.data,30757,ratings,"[""433"", ""1005"", ""5"", ""880585730""]",FOREIGN KEY constraint failed
+u.data,31605,ratings,"[""90"", ""543"", ""3"", ""891383173""]",FOREIGN KEY constraint failed
+u.data,34151,ratings,"[""592"", ""1623"", ""4"", ""882955794""]",FOREIGN KEY constraint failed
+u.data,35685,ratings,"[""308"", ""1252"", ""3"", ""887741604""]",FOREIGN KEY constraint failed
+u.data,36294,ratings,"[""445"", ""1252"", ""1"", ""891199749""]",FOREIGN KEY constraint failed
+u.data,36849,ratings,"[""406"", ""543"", ""4"", ""884631010""]",FOREIGN KEY constraint failed
+u.data,38098,ratings,"[""527"", ""543"", ""4"", ""879455740""]",FOREIGN KEY constraint failed
+u.data,38776,ratings,"[""568"", ""1005"", ""1"", ""877907877""]",FOREIGN KEY constraint failed
+u.data,39802,ratings,"[""504"", ""543"", ""4"", ""887908861""]",FOREIGN KEY constraint failed
+u.data,42973,ratings,"[""100"", ""1233"", ""3"", ""891375112""]",FOREIGN KEY constraint failed
+u.data,45158,ratings,"[""655"", ""1252"", ""3"", ""887425601""]",FOREIGN KEY constraint failed
+u.data,45334,ratings,"[""385"", ""1252"", ""5"", ""879578355""]",FOREIGN KEY constraint failed
+u.data,45336,ratings,"[""566"", ""1005"", ""5"", ""881650090""]",FOREIGN KEY constraint failed
+u.data,47653,ratings,"[""637"", ""1233"", ""5"", ""882900888""]",FOREIGN KEY constraint failed
+u.data,47978,ratings,"[""585"", ""1623"", ""4"", ""891283921""]",FOREIGN KEY constraint failed
+u.data,48721,ratings,"[""585"", ""1005"", ""4"", ""891283339""]",FOREIGN KEY constraint failed
+u.data,49817,ratings,"[""383"", ""1005"", ""3"", ""891193072""]",FOREIGN KEY constraint failed
+u.data,50204,ratings,"[""90"", ""1005"", ""2"", ""891383912""]",FOREIGN KEY constraint failed
+u.data,51592,ratings,"[""139"", ""1233"", ""5"", ""879537844""]",FOREIGN KEY constraint failed
+u.data,53385,ratings,"[""181"", ""1252"", ""1"", ""878962168""]",FOREIGN KEY constraint failed
+u.data,54434,ratings,"[""537"", ""543"", ""5"", ""886031074""]",FOREIGN KEY constraint failed
+u.data,55024,ratings,"[""522"", ""543"", ""4"", ""876961076""]",FOREIGN KEY constraint failed
+u.data,55248,ratings,"[""655"", ""1322"", ""2"", ""887523641""]",FOREIGN KEY constraint failed
+u.data,56037,ratings,"[""655"", ""1005"", ""4"", ""887474605""]",FOREIGN KEY constraint failed
+u.data,56762,ratings,"[""399"", ""543"", ""3"", ""882509971""]",FOREIGN KEY constraint failed
+u.data,57037,ratings,"[""567"", ""1252"", ""3"", ""882427294""]",FOREIGN KEY constraint failed
+u.data,61273,ratings,"[""405"", ""543"", ""1"", ""885549407""]",FOREIGN KEY constraint failed
+u.data,61742,ratings,"[""838"", ""1005"", ""4"", ""887066678""]",FOREIGN KEY constraint failed
+u.data,62746,ratings,"[""655"", ""1623"", ""4"", ""887428735""]",FOREIGN KEY constraint failed
+u.data,62857,ratings,"[""486"", ""1322"", ""3"", ""879875347""]",FOREIGN KEY constraint failed
+u.data,63361,ratings,"[""537"", ""1005"", ""3"", ""886031752""]",FOREIGN KEY constraint failed
+u.data,65014,ratings,"[""828"", ""1005"", ""3"", ""891037813""]",FOREIGN KEY constraint failed
+u.data,65731,ratings,"[""378"", ""543"", ""4"", ""880055840""]",FOREIGN KEY constraint failed
+u.data,66942,ratings,"[""655"", ""1633"", ""3"", ""889331315""]",FOREIGN KEY constraint failed
+u.data,67823,ratings,"[""835"", ""543"", ""5"", ""891033232""]",FOREIGN KEY constraint failed
+u.data,68247,ratings,"[""355"", ""1233"", ""4"", ""879486421""]",FOREIGN KEY constraint failed
+u.data,77828,ratings,"[""374"", ""1322"", ""3"", ""880394000""]",FOREIGN KEY constraint failed
+u.data,78116,ratings,"[""782"", ""1252"", ""3"", ""891500066""]",FOREIGN KEY constraint failed
+u.data,78125,ratings,"[""585"", ""543"", ""3"", ""891284393""]",FOREIGN KEY constraint failed
+u.data,78388,ratings,"[""639"", ""1005"", ""2"", ""891239813""]",FOREIGN KEY constraint failed
+u.data,79427,ratings,"[""916"", ""1005"", ""4"", ""880845303""]",FOREIGN KEY constraint failed
+u.data,80024,ratings,"[""655"", ""1233"", ""3"", ""887650512""]",FOREIGN KEY constraint failed
+u.data,80475,ratings,"[""181"", ""1366"", ""1"", ""878962200""]",FOREIGN KEY constraint failed
+u.data,80713,ratings,"[""269"", ""1005"", ""4"", ""891447427""]",FOREIGN KEY constraint failed
+u.data,89513,ratings,"[""206"", ""1233"", ""1"", ""888180018""]",FOREIGN KEY constraint failed
+u.data,90390,ratings,"[""883"", ""1005"", ""5"", ""891695570""]",FOREIGN KEY constraint failed
+u.data,91161,ratings,"[""894"", ""1005"", ""5"", ""882404669""]",FOREIGN KEY constraint failed
+u.data,91280,ratings,"[""807"", ""543"", ""2"", ""892528427""]",FOREIGN KEY constraint failed
+u.data,93417,ratings,"[""449"", ""1005"", ""5"", ""880410734""]",FOREIGN KEY constraint failed
+u.data,93422,ratings,"[""405"", ""1005"", ""1"", ""885549407""]",FOREIGN KEY constraint failed
+u.data,93528,ratings,"[""655"", ""543"", ""3"", ""887474050""]",FOREIGN KEY constraint failed
+u.data,94862,ratings,"[""769"", ""1322"", ""2"", ""885424730""]",FOREIGN KEY constraint failed
+u.data,95521,ratings,"[""541"", ""543"", ""4"", ""883875432""]",FOREIGN KEY constraint failed
+u.data,98943,ratings,"[""773"", ""1252"", ""4"", ""888538643""]",FOREIGN KEY constraint failed
+u.data,99909,ratings,"[""358"", ""1005"", ""4"", ""891269723""]",FOREIGN KEY constraint failed
